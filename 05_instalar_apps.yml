@@ -7,6 +7,10 @@
       ansible.builtin.import_tasks:
         file: instalar_apps/tasks/pacotes_apt.yml
 
+    - name: Instalar Flatpak e adicionar o repositório Flathub (importar tasks)
+      ansible.builtin.import_tasks:
+        file: instalar_apps/tasks/flatpak.yml
+
     - name: Instalar apps Flatpak (importar tasks)
       ansible.builtin.import_tasks:
         file: instalar_apps/tasks/apps_flatpak.yml

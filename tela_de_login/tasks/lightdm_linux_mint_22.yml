@@ -1,0 +1,6 @@
+---
+- name: Editar arquivo de configuração /etc/lightdm/lightdm.conf
+  ansible.builtin.copy:
+    src: tela_de_login/files/lightdm_linux_mint_22.conf
+    dest: /etc/lightdm/lightdm.conf
+    mode: "0644"

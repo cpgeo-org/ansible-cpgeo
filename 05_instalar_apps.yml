@@ -1,7 +1,17 @@
-- name: Instalar pacotes apt
+---
+- name: Instalar aplicativos
   hosts: localhost
   connection: local
   tasks:
     - name: Instalar pacotes APT (importar tasks)
       ansible.builtin.import_tasks:
         file: instalar_apps/tasks/pacotes_apt.yml
+
+    - name: Instalar apps Flatpak (importar tasks)
+      ansible.builtin.import_tasks:
+        file: instalar_apps/tasks/apps_flatpak.yml
+
+    - name: Instalar apps Flatpak extras (importar tasks)
+      ansible.builtin.import_tasks:
+        file: instalar_apps/tasks/apps_flatpak_extras.yml
+      when: (extras is defined) and (extras | bool)

@@ -1,0 +1,13 @@
+---
+- name: Adicionar repositório qBittorrent
+  ansible.builtin.apt_repository:
+    repo: 'ppa:qbittorrent-team/qbittorrent-stable'
+
+- name: Atualizar lista de pacotes (apt-get update)
+  ansible.builtin.apt:
+    update_cache: true
+
+- name: Instalar qBittorrent via APT
+  ansible.builtin.apt:
+    name: qbittorrent
+    state: present

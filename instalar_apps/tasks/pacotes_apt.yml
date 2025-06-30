@@ -16,7 +16,6 @@
       - gnumeric
       - htop
       - neovim
-      - nscd
       - openssh-client
       - openssh-server
       - pkg-config

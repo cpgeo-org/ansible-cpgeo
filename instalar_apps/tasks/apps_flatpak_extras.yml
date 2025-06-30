@@ -1,0 +1,25 @@
+---
+- name: Instalar Ferdium (Flatpak)
+  community.general.flatpak:
+    name: org.ferdium.Ferdium
+    state: present
+
+- name: Instalar KeePassXC (Flatpak)
+  community.general.flatpak:
+    name: org.keepassxc.KeePassXC
+    state: present
+
+- name: Instalar Okular (Flatpak)
+  community.general.flatpak:
+    name: org.kde.okular
+    state: present
+
+- name: Instalar Spotify (Flatpak)
+  community.general.flatpak:
+    name: com.spotify.Client
+    state: present
+
+- name: Instalar ZapZap (Flatpak)
+  community.general.flatpak:
+    name: com.rtosta.zapzap
+    state: present

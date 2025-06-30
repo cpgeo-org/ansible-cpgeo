@@ -1,0 +1,5 @@
+---
+- name: Instalar FileZilla (Flatpak)
+  community.general.flatpak:
+    name: org.filezillaproject.Filezilla
+    state: present

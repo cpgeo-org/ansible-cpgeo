@@ -1,8 +1,8 @@
 ---
-- name: Configurar tela de login LightDM
+- name: Configurar tela de login (display manager) LightDM
   hosts: localhost
   connection: local
   tasks:
     - name: Desativar guest e exibir login manual (importar tasks)
       ansible.builtin.import_tasks:
-        file: display_manager/tasks/lightdm_ubuntu_mate_24.yml
+        file: tela_de_login/tasks/lightdm_ubuntu_mate_24.yml

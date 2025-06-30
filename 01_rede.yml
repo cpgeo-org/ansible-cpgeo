@@ -20,7 +20,7 @@
 
     - name: Copiar arquivo de configuração de rede para /etc/systemd/network/
       ansible.builtin.template:
-        src: templates/static.network.j2
+        src: rede/templates/static.network.j2
         dest: /etc/systemd/network/static.network
         mode: "0644"
 

@@ -1,13 +1,13 @@
 ---
 - name: Editar arquivo de configuração /etc/lightdm/lightdm.conf.d/91-arctica-greeter-guest-session.conf
   ansible.builtin.copy:
-    src: display_manager/files/91-arctica-greeter-guest-session.conf
+    src: tela_de_login/files/91-arctica-greeter-guest-session.conf
     dest: /etc/lightdm/lightdm.conf.d/91-arctica-greeter-guest-session.conf
     mode: "0644"
 
 - name: Editar arquivo de configuração /etc/lightdm/lightdm.conf.d/91-arctica-greeter-mate.conf
   ansible.builtin.copy:
-    src: display_manager/files/91-arctica-greeter-mate.conf
+    src: tela_de_login/files/91-arctica-greeter-mate.conf
     dest: /etc/lightdm/lightdm.conf.d/91-arctica-greeter-mate.conf
     mode: "0644"
 

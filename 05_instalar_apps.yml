@@ -3,6 +3,10 @@
   hosts: localhost
   connection: local
   tasks:
+    - name: Gather the package facts
+      ansible.builtin.package_facts:
+        manager: auto
+
     - name: Instalar pacotes APT (importar tasks)
       ansible.builtin.import_tasks:
         file: instalar_apps/tasks/pacotes_apt.yml

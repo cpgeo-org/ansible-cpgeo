@@ -3,8 +3,8 @@
   hosts: localhost
   connection: local
   tasks:
-    - name: Editar o arquivo de configuração do servidor ssh /etc/sshd_config
+    - name: Permitir login root usando ssh. Inserir arquivo de configuração /etc/ssh/sshd_config.d/99-allow-root-login.conf
       ansible.builtin.copy:
-        src: ssh/files/sshd_config
-        dest: /etc/sshd_config
+        src: ssh/files/99-allow-root-login.conf
+        dest: /etc/ssh/sshd_config.d/99-allow-root-login.conf
         mode: "0644"

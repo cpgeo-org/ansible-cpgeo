@@ -1,4 +1,17 @@
 ---
+- name: Verificar compatibilidade do sistema
+  hosts: localhost
+  pre_tasks:
+    - name: Falhar se o sistema operacional não for Linux Mint 22 ou Ubuntu 24
+      ansible.builtin.fail:
+        msg: >
+          Sistema operacional não suportado. Apenas Linux Mint 22 and Ubuntu 24 são suportados.
+      when: >
+        not (
+          (ansible_distribution == "Linux Mint" and ansible_distribution_version is version("22", "==")) or
+          (ansible_distribution == "Ubuntu" and ansible_distribution_version is version("24", "=="))
+        )
+
 - import_playbook: 01_rede.yml
 - import_playbook: 02_cliente_nfs.yml
 - import_playbook: 03_cliente_nis.yml

@@ -3,12 +3,12 @@
   hosts: localhost
   connection: local
   tasks:
-    - name: Desativar guest e exibir login manual Ubuntu MATE (importar tasks)
+    - name: Desativar guest e exibir login manual (importar tasks) [Ubuntu MATE 24]
       ansible.builtin.import_tasks:
-        file: tela_de_login/tasks/lightdm_ubuntu_mate_24.yml
-      when: ansible_facts['lsb']['description'] == "Ubuntu 24.04.2 LTS"
+        file: tela_de_login/tasks/lightdm_linux-mint-22.yml
+      when: (ansible_distribution == "Ubuntu" and ansible_distribution_version is version("24", "=="))
 
-    - name: Desativar guest e exibir login manual Linux Mint (importar tasks)
+    - name: Desativar guest e exibir login manual (importar tasks) [Linux Mint 22]
       ansible.builtin.import_tasks:
-        file: tela_de_login/tasks/lightdm_linux_mint_22.yml
-      when: ansible_facts['lsb']['description'] == "Linux Mint 22.1"
+        file: tela_de_login/tasks/lightdm_ubuntu-mate-24.yml
+      when: (ansible_distribution == "Linux Mint" and ansible_distribution_version is version("22", "=="))

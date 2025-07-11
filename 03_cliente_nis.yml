@@ -22,11 +22,19 @@
         dest: /etc/defaultdomain
         mode: "0644"
 
-    - name: Editar o arquivo de configuração /etc/nsswitch.conf
+    - name: Editar o arquivo de configuração /etc/nsswitch.conf [Ubuntu MATE 24]
       ansible.builtin.copy:
-        src: cliente_nis/files/nsswitch.conf
+        src: cliente_nis/files/nsswitch_ubuntu-mate-24.conf
         dest: /etc/nsswitch.conf
         mode: "0644"
+      when: (ansible_distribution == "Ubuntu" and ansible_distribution_version is version("24", "=="))
+
+    - name: Editar o arquivo de configuração /etc/nsswitch.conf [Linux Mint 22]
+      ansible.builtin.copy:
+        src: cliente_nis/files/nsswitch_linux-mint-22.conf
+        dest: /etc/nsswitch.conf
+        mode: "0644"
+      when: (ansible_distribution == "Linux Mint" and ansible_distribution_version is version("22", "=="))
 
     - name: Reiniciar e ativar o serviço rpcbind
       ansible.builtin.systemd_service:

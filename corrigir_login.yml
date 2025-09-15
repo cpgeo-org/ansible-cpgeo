@@ -1,0 +1,2 @@
+- import_playbook: remover_cliente_nis.yml
+- import_playbook: 03_cliente_ldap.yml

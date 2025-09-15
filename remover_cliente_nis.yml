@@ -1,0 +1,26 @@
+---
+- name: Remover NIS
+  hosts: all,localhost
+  tasks:
+    - name: Remover pacotes nis e nscd
+      ansible.builtin.apt:
+        name:
+          - nis
+          - nscd
+        state: absent
+
+    - name: Restaurar arquivo de configuração /etc/nsswitch.conf
+      ansible.builtin.copy:
+        src: remover_cliente_nis/files/nsswitch.conf
+        dest: /etc/nsswitch.conf
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Restaurar arquivo de configuração /etc/pam.d/cinnamon-screensaver
+      ansible.builtin.copy:
+        src: remover_cliente_nis/files/cinnamon-screensaver
+        dest: /etc/pam.d/cinnamon-screensaver
+        owner: root
+        group: root
+        mode: "0644"

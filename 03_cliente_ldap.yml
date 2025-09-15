@@ -1,6 +1,6 @@
 ---
 - name: Configurar cliente LDAP usando SSSD
-  hosts: all
+  hosts: all,localhost
   tasks:
     - name: Adicionar entrada ao arquivo /etc/hosts
       ansible.builtin.lineinfile:

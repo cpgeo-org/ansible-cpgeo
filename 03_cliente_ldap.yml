@@ -1,0 +1,61 @@
+---
+- name: Configurar cliente LDAP usando SSSD
+  hosts: all
+  tasks:
+    - name: Adicionar entrada ao arquivo /etc/hosts
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        line: "192.168.0.130 ldap-server.cpgeo.com ldap-server.cpgeo"
+        state: present
+
+    - name: Obter certificado CA
+      ansible.builtin.copy:
+        src: cliente_ldap/files/mycacert.crt
+        dest: /usr/local/share/ca-certificates/mycacert.crt
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Atualizar certificados CA
+      ansible.builtin.command: update-ca-certificates
+
+    - name: Instalar pacotes sssd-ldap e ldap-utils
+      ansible.builtin.apt:
+        name:
+          - sssd-ldap
+          - ldap-utils
+        state: present
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Criar o arquivo de configuração /etc/sssd/sssd.conf
+      ansible.builtin.copy:
+        src: cliente_ldap/files/sssd.conf
+        dest: /etc/sssd/sssd.conf
+        owner: root
+        group: root
+        mode: "0600"
+
+    - name: Criar o diretório /etc/ldap
+      ansible.builtin.file:
+        path: /etc/ldap
+        state: directory
+        mode: "0755"
+
+    - name: Criar o arquivo de configuração /etc/ldap/ldap.conf
+      ansible.builtin.copy:
+        src: cliente_ldap/files/ldap.conf
+        dest: /etc/ldap/ldap.conf
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Iniciar o serviço sssd
+      ansible.builtin.systemd_service:
+        name: sssd
+        state: restarted
+        enabled: true
+
+# Verificar
+# ldapwhoami -x -ZZ -H ldap://ldap-server.cpgeo.com
+# ldapwhoami -x -H ldaps://ldap-server.cpgeo.com

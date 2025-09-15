@@ -1,0 +1,9 @@
+---
+- name: Atualizar lista de pacotes (apt-get update)
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Instalar NoMachine
+  ansible.builtin.apt:
+    deb: /dados/nis/Downloads/applications/nomachine_9.1.24_6_amd64.deb

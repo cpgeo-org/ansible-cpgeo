@@ -36,6 +36,9 @@
         group: root
         mode: "0600"
 
+    - name: Habilitar a criação automática de diretórios home
+      ansible.builtin.command: pam-auth-update --enable mkhomedir
+
     - name: Criar o diretório /etc/ldap
       ansible.builtin.file:
         path: /etc/ldap

@@ -8,10 +8,12 @@
           - nis
           - nscd
         state: absent
+        autoremove: true
+        purge: true
 
     - name: Restaurar arquivo de configuração /etc/nsswitch.conf
       ansible.builtin.copy:
-        src: remover_cliente_nis/files/nsswitch.conf
+        src: files/nsswitch.conf
         dest: /etc/nsswitch.conf
         owner: root
         group: root
@@ -19,7 +21,7 @@
 
     - name: Restaurar arquivo de configuração /etc/pam.d/cinnamon-screensaver
       ansible.builtin.copy:
-        src: remover_cliente_nis/files/cinnamon-screensaver
+        src: files/cinnamon-screensaver
         dest: /etc/pam.d/cinnamon-screensaver
         owner: root
         group: root

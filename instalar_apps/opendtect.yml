@@ -1,0 +1,31 @@
+---
+- name: Instalar OpendTect
+  hosts: all
+  tasks:
+    - name: Instalar csh
+      ansible.builtin.apt:
+        name: csh
+        state: present
+        update_cache: true
+        cache_valid_time: 7200
+
+    - name: Instalar a biblioteca de sistema xcb
+      ansible.builtin.apt:
+        name:
+          - libx11-xcb1
+          - libxcb-util1
+          - libxcb1
+        state: present
+
+    - name: Extrair arquivos de programa do OpendTect
+      ansible.builtin.unarchive:
+        src: /dados/nis/shared/program_files/OpendTect.tar
+        dest: /opt
+        creates: /opt/OpendTect
+        remote_src: true
+
+    - name: Disponibilizar executável do OpendTect no terminal
+      ansible.builtin.lineinfile:
+        path: /etc/bash.bashrc
+        line: "alias start_dtect='/opt/OpendTect/7.0.0/start_dtect'"
+        state: present

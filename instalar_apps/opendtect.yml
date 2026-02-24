@@ -1,6 +1,7 @@
 ---
 - name: Instalar OpendTect
   hosts: all
+  gather_facts: false
   tasks:
     - name: Instalar csh
       ansible.builtin.apt:
@@ -28,4 +29,10 @@
       ansible.builtin.lineinfile:
         path: /etc/bash.bashrc
         line: "alias start_dtect='/opt/OpendTect/7.0.0/start_dtect'"
+        state: present
+
+    - name: Configurar "Survey Data Root" definindo a variável de ambiente DTECT_DATA
+      ansible.builtin.lineinfile:
+        path: /etc/bash.bashrc
+        line: "export DTECT_DATA='/cpgeo_database/17/ODData'"
         state: present

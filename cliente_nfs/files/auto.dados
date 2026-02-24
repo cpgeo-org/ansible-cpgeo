@@ -1,4 +1,4 @@
-nis                    -nosuid    192.168.0.99:/database_nis
+nis                    -nosuid    192.168.0.201:/mnt/pool01/home
 ftp                    -nosuid    pod2:/disco2/ftp
 virtual_disk_images    -nosuid    filer7:/disco2/virtual_disk_images
 # Backups

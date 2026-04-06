@@ -1,0 +1,8 @@
+---
+- name: Configurar cliente NFS
+  hosts: workstations,computadores
+  gather_facts: false
+  tasks:
+    - name: Configurar NFS (importar tasks)
+      ansible.builtin.import_tasks:
+        file: cliente_nfs/tasks/nfs_atualizar.yml

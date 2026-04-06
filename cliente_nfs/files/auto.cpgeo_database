@@ -23,9 +23,10 @@
 23         -nosuid    sm1:/disco1/database23
 24         -nosuid    sm2:/disco2/database24
 25         -nosuid    pod2:/disco1/db25
-disco61    -nosuid    cpgeo61:/disco61
-disco64    -nosuid    cpgeo64:/disco64
-nvme       -nosuid    192.168.0.81:/mnt/pool1
+hd60       -nosuid    cpgeo60:/disco_hd
+hd61       -nosuid    cpgeo61:/disco2
+ssd61      -nosuid    cpgeo61:/disco61
+ssd64      -nosuid    cpgeo64:/disco64
 # Backups
 # -------
 1_bkp        -nosuid,ro  filer3:/volume1/backup_database1

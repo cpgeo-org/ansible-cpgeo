@@ -24,8 +24,10 @@
 24         -nosuid    sm2:/disco2/database24
 25         -nosuid    pod2:/disco1/db25
 hd60       -nosuid    cpgeo60:/disco_hd
+ssd60      -nosuid    cpgeo60:/nvme
 hd61       -nosuid    cpgeo61:/disco2
 ssd61      -nosuid    cpgeo61:/disco61
+ssd62      -nosuid    cpgeo60:/ssd62
 ssd64      -nosuid    cpgeo64:/disco64
 # Backups
 # -------

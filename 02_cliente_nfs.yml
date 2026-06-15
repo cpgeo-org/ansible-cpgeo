@@ -1,6 +1,6 @@
 ---
 - name: Configurar cliente NFS
-  hosts: localhost
+  hosts: all,localhost
   connection: local
   tasks:
     - name: Instalar NFS (importar tasks)

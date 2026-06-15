@@ -1,5 +1,5 @@
 ---
-- name: Atualizar lista de pacotes (apt-get update)
+- name: Atualizar índice de pacotes apt
   ansible.builtin.apt:
     update_cache: true
     cache_valid_time: 3600
@@ -38,8 +38,3 @@
   ansible.builtin.apt:
     deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   when: "'google-chrome-stable' not in ansible_facts.packages"
-
-- name: Instalar Visual Studio Code
-  ansible.builtin.apt:
-    deb: https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
-  when: "'code' not in ansible_facts.packages"

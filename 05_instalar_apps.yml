@@ -11,6 +11,11 @@
       ansible.builtin.import_tasks:
         file: instalar_apps/tasks/pacotes_apt.yml
 
+    - name: Instalar Visual Studio Code (importar tasks)
+      ansible.builtin.apt:
+        deb: instalar_apps/tasks/vscode.yml
+      when: "'code' not in ansible_facts.packages"
+
     - name: Instalar Flatpak e adicionar o repositório Flathub (importar tasks)
       ansible.builtin.import_tasks:
         file: instalar_apps/tasks/flatpak.yml
